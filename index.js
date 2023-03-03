@@ -1,31 +1,17 @@
-function log(msg){
-    console.log(msg);
-}
+var express = require("express");
+var cool = require("cool-ascii-faces");
 
-log("Mostramos a continuacion un Array de datos de un columna de mi propuesta");
+var app = express();
+var port = process.env.PORT || 12345
 
-var immigrant = new Array();
-immigrant=[2.930,3.111,4.014,3.403,3.167,3.486,3.134,3.058,4.473,4.329];
+app.get("/faces", (request, response) => {
+    response.send(cool());
+    console.log("New request");  
 
-log(immigrant)
-function calcularMediaAritmetica(immigrant) {
-    let sumaTotal = 0;
-    let cantidadNumeros = 0;
-    
-    immigrant.forEach(numero => {
-      sumaTotal += numero;
-      cantidadNumeros++;
-    });
-  
-    const mediaAritmetica = sumaTotal / cantidadNumeros;
-    
-    return mediaAritmetica;
-  }
+});
 
-  log(calcularMediaAritmetica(immigrant))
+app.listen(port, () => {
+    console.log(`Server ready in  port ${port}`);
 
-
-
-
-
+});
 
